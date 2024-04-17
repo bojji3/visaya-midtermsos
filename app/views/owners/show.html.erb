@@ -1,0 +1,63 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @owner %>
+
+<h4>PROPERTY: </h4>
+<table style="width:100%">
+
+<thead>
+   <tr>
+
+
+    <td><strong>Type</strong</td>
+    <td><strong>Description</strong</td>
+    <td><strong>Location</strong</td>
+    <td><strong>Purchase Price</strong</td>
+    <td><strong>Purchase Date</strong</td>
+   </tr>
+</thead>
+<tbody>
+
+  <%@owner.properties.each do |property|%>
+    <tr>
+      <td><%= property.property_type%></td>
+      <td><%= property.description%></td>
+      <td><%= property.location%></td>
+      <td><%= property.purchase_price%></td>
+      <td><%= property.purchase_date%></td>
+    </tr>
+  <% end %>
+</tbody>
+
+<tr><td><strong>VEHICLES: </strong></td></tr>
+  <tr>
+  
+      <td><strong>Vehicle Type</strong></td>
+      <td><strong>Model</strong></td>
+      <td><strong>Color</strong></td>
+      <td><strong>Serial_number</strong></td>
+      <td><strong>Purchase Price</strong></td>
+      <td><strong>Purchase Date</strong></td>
+    </tr>
+  
+  <tbody style="width:100%">
+    <%@owner.vehicles.each do |vehicle|%>
+      <tr>
+
+        <td><%= vehicle.vehicle_type%></td>
+        <td><%= vehicle.model%></td>
+        <td><%= vehicle.color%></td>
+        <td><%= vehicle.serial_number%></td>
+        <td><%= vehicle.purchase_price%></td>
+        <td><%= vehicle.purchase_date%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "Edit this owner", edit_owner_path(@owner) %> |
+  <%= link_to "Back to owners", owners_path %>
+
+  <%= button_to "Destroy this owner", @owner, method: :delete %>
+</div>
